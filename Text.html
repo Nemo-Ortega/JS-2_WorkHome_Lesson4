@@ -1,0 +1,24 @@
+<script>
+
+// 1 вариант
+var text = ' \'I\'ll start learning French soon,\' said Steven.\' <br> Pat said, \'I will be ready to pass my exam tomorrow.\' <br> \'She asks when you\'ll be free\' <br> The woman said to the boy, \'Don\'t cry.\' <br> She say him \'we\'ve reserved for you this ticket\' <br> Mary\'s dog joying on dog playground  <br><br>'; 
+const RegExp = /\'/g;                       // обозначаем регулярное выражение для одинарной кавычки
+var b = text.replace(RegExp, "\"");         // заменяем все одинарные кавычки в тексте на двойные
+const RegExp1 = /\"ll /g;                   // стр 7, 9, 11, 13 обозначаем регулярные выражения для замены окончаний с двумя кавычками, на окончание с одной кавычкой
+var c = b.replace(RegExp1, "\'ll ");        // стр. 8, 10, 12, 14 - производим обратную замену окончаний с двумя кавычками на окончания с одной кавычкой 
+const RegExp2 = /\"t /g;
+var d = c.replace(RegExp2, "\'t ");
+const RegExp3 = /\"s /g;
+var e = d.replace(RegExp3, "\'s ");
+const RegExp4 = /\"ve /g;
+var f = e.replace(RegExp4, "\'ve ");
+document.write(f);                          // выводим полученный после всех замен результат
+
+//2 вариант
+var text = ' \'I\'ll start learning French soon,\' said Steven.\' <br> Pat said, \'I will be ready to pass my exam tomorrow.\' <br> \'She asks when you\'ll be free\' <br> The woman said to the boy, \'Don\'t cry.\' <br> She say him \'we\'ve reserved for you this ticket\' <br> Mary\'s dog joying on dog playground ';
+document.write(text.replace(/([ \.,])'/g,'$1"').replace(/'([ ])/g,'"$1'));
+// кавычка заменяется на двойную, если перед ней стоит пробел, точка или запятая (то есть, эта кавычка - точно не апостроф), 
+// затем повторный replace от полученной строки (апостроф+пробел меняется на двойные кавычки+пробел) и все печатается
+
+
+</script>
